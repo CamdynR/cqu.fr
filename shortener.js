@@ -20,6 +20,7 @@ app.get('/:short', (req, res) => {
     return;
   } else {
     const newShortCode = generateShortURL();
+    console.log(newShortCode);
     shortened[newShortCode] = short;
     res.json({
       url: `https://cqu.fr/${newShortCode}`
@@ -47,7 +48,6 @@ function generateShortURL() {
     for (let i = 0; i < 3; i++) {
       shortURL += charSet.charAt(Math.floor(Math.random() * charSet.length));
     }
-    console.log(shortURL);
   }
   return shortURL;
 }
