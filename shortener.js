@@ -47,6 +47,7 @@ function generateShortURL() {
     for (let i = 0; i < 3; i++) {
       shortURL += charSet.charAt(Math.floor(Math.random() * charSet.length));
     }
+    console.log(shortURL);
   }
   return shortURL;
 }
