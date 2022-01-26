@@ -29,3 +29,18 @@ app.get('/:short', (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
+
+/****************************/
+/***   Helper Functions   ***/
+/****************************/
+
+/**
+ * Takes in a URL and creates a unique, short URL for it
+ * @param {string} url The desired url to shorten
+ * @returns {string} The new shortened 4 character path e.g. /mdpk
+ */
+function generateShortURL(url) {
+  let shortURL = '';
+  // TODO
+  return shortURL;
+}
