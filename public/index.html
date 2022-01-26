@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Link Shortener</title>
+    <style>
+      * {
+        font-family: sans-serif;
+      }
+
+      input[type='url'] {
+        width: 340px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Cam's Quick URLs - For Real</h1>
+    <form>
+      <input type="url" placeholder="URL to shorten" />
+      <button type="submit">Shorten</button>
+    </form>
+    <script>
+      document.querySelector('form').addEventListener('submit', (e) => {
+        e.preventDefault();
+      });
+    </script>
+  </body>
+</html>
