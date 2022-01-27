@@ -53,7 +53,6 @@ function keyHandler(req, res, http) {
     const i = req.url.indexOf('?');
     const queryStr = req.url.substr(i);
     keyOrURL += queryStr;
-    console.log(keyOrURL);
   }
 
   // If the length is 3, then it must be a key, check if it exists
