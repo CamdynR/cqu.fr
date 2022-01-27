@@ -19,6 +19,7 @@ function formSubmitListener(e) {
     .then(data => {
       document.querySelector('#output-wrapper').removeAttribute('hidden');
       document.querySelector('output').innerHTML = data.url;
+      document.querySelector('#copy').click();
     })
     .catch(err => {
       console.error(err);
