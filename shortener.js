@@ -15,11 +15,6 @@ const urlsToKeys = {};
 // Banned Keys list to avoid insensitive topics
 const bannedKeys = ['KKK'];
 
-// Route for the landing page
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
-
 // Route so the favicon.ico doesn't trigger a reaction
 app.get('/favicon.ico', (req, res) => {
   res.status(204).send();
