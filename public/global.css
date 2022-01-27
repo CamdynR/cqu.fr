@@ -27,6 +27,8 @@ body, html {
 }
 
 button {
+  background-color: white;
+  color: black;
   transition: 0.07s ease all;
 }
 
