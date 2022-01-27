@@ -25,6 +25,7 @@ function formSubmitListener(e) {
     });
 }
 
+// Copies text to clipboard asynchronously, then displays toast message
 function copyText() {
   const url = document.querySelector('output').innerHTML;
   navigator.clipboard.writeText(url)
