@@ -6,6 +6,7 @@ const port = 3001;
 
 const keysToURLs = {};
 const urlsToKeys = {};
+const bannedShorts = ['KKK'];
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
@@ -52,13 +53,13 @@ app.listen(port, () => {
  * @returns {string} The new shortened 4 character path e.g. /mdpk
  */
 function generateShortURL() {
-  const charSet = 'ABCDEFGHJKMNPQRSTUVWXYZ';
+  const charSet = 'BCDFGHJKMNPQRSTVWXYZ';
   let shortURL = '';
   do {
     shortURL = '';
     for (let i = 0; i < 3; i++) {
       shortURL += charSet.charAt(Math.floor(Math.random() * charSet.length));
     }
-  } while (Object.keys(keysToURLs).includes(shortURL));
+  } while (Object.keys(keysToURLs).includes(shortURL) || bannedShorts.includes(shortURL));
   return shortURL;
 }
