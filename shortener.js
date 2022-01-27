@@ -68,7 +68,7 @@ function keyHandler(req, res, http) {
     res.status(404).send(`This URL does not exist: /${keyOrURL}`);
     return;
   // Else it's an URL
-  } else if (urlsToKeys[keyOrURL]) {
+  } else {
     res.set('Content-Type', 'text/html');
     res.send(`
     <!DOCTYPE html>
