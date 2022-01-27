@@ -64,7 +64,8 @@ function keyHandler(req, res, http) {
   // If it's a URL that's already been shortened, respond accordingly
   } else if (urlsToKeys[keyOrURL]) {
     res.json({
-      url: `https://cqu.fr/${urlsToKeys[keyOrURL]}`
+      url: `https://cqu.fr/${urlsToKeys[keyOrURL]}`,
+      num: Object.keys(keysToURLs).length
     });
     return;
   // It must be then a new URL, so create a new code for it

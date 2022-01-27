@@ -25,8 +25,17 @@ function formSubmitListener(e) {
     });
 }
 
-async function copyText() {
+function copyText() {
   const url = document.querySelector('output').innerHTML;
-  await navigator.clipboard.writeText(url);
-  console.log('Successfully copied!');
+  navigator.clipboard.writeText(url)
+    .then(() => {
+      const copy = document.querySelector('#copy');
+      copy.classList.toggle('copied');
+      setTimeout(() => {
+        copy.classList.toggle('copied');
+      }, 100);
+    })
+    .catch(err => {
+      console.error(err);
+    });
 }

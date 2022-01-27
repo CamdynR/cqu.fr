@@ -91,6 +91,23 @@ output {
   color: white;
 }
 
+#copy::before {
+  background-color: white;
+  border-radius: 5px;
+  content: 'Copied!';
+  color: black;
+  margin: -58px -21.5px;
+  padding: 5px 10px;
+  position: absolute;
+  transition: 1.4s ease all;
+  opacity: 0;
+}
+
+#copy.copied::before {
+  transition: none;
+  opacity: 0.7;
+}
+
 #output-wrapper {
   align-self: flex-start;
   display: flex;
