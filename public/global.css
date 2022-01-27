@@ -32,17 +32,6 @@ button {
   transition: 0.07s ease all;
 }
 
-button:hover {
-  cursor: pointer;
-  transform: scale(1.07);
-  transition: 0.07s ease all;
-}
-
-button:active {
-  transform: scale(1.02);
-  transition: none;
-}
-
 button, input {
   border: none;
   border-radius: 12px;
@@ -126,6 +115,19 @@ output {
   }
   100% {
       background-position: 0% 50%;
+  }
+}
+
+@media (hover: hover) {
+  button:hover {
+    cursor: pointer;
+    transform: scale(1.07);
+    transition: 0.07s ease all;
+  }
+  
+  button:active {
+    transform: scale(1.02);
+    transition: none;
   }
 }
 
