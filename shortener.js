@@ -10,6 +10,10 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
+app.get('/favicon.ico', (req, res) => {
+  res.status(204).send();
+});
+
 app.get('/:short', (req, res) => {
   const short = req.params.short;
   if (short.length == 3 && shortened[short]) {
