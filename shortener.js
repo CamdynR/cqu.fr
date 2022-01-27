@@ -16,11 +16,10 @@ app.get('/favicon.ico', (req, res) => {
   res.status(204).send();
 });
 
-app.get('/http:/:short', (req, res) => shortHandler(req, res));
+app.get('/:short', shortHandler(req, res));
+app.get('/http:/:short', shortHandler(req, res));
+app.get('/https:/:short', shortHandler(req, res));
 
-app.get('/https:/:short', (req, res) => shortHandler(req, res));
-
-app.get('/:short', (req, res) => shortHandler(req, res));
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
