@@ -19,7 +19,7 @@ app.get('/favicon.ico', (req, res) => {
 app.get('/:short', (req, res) => {
   const short = req.params.short;
   if (short.length == 3 && keysToURLs[short]) {
-    res.redirect(301, keysToURLs[short]);
+    res.redirect(301, `https://${keysToURLs[short]}`);
     return;
   } else if (short.length <= 3 && !keysToURLs[short]) {
     res.status(404).send(`This URL does not exist: /${short}`);
