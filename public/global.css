@@ -110,7 +110,7 @@ output {
   align-self: flex-start;
   border-radius: 5px;
   height: 400px;
-  opacity: 0.8;
+  opacity: 1;
   width: 400px;
 }
 
