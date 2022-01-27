@@ -14,7 +14,7 @@ function init() {
 function formSubmitListener(e) {
   e.preventDefault();
   const url = document.querySelector('input[type="url"]').value;
-  fetch(`https://cqu.fr/${url}`)
+  fetch(`https://cqu.fr/api/${url}`)
     .then(response => response.json())
     .then(data => {
       document.querySelector('#output-wrapper').removeAttribute('hidden');
