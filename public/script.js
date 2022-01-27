@@ -17,8 +17,11 @@ function formSubmitListener(e) {
   fetch(`https://cqu.fr/api/${url}`)
     .then(response => response.json())
     .then(data => {
+      const qr = docdocument.querySelector('#qr-code');
       document.querySelector('#output-wrapper').removeAttribute('hidden');
       document.querySelector('output').innerHTML = data.url;
+      qr.setAttribute('src', `data:image/jpeg;base64,${data.qr}`);
+      qr.removeAttribute('hidden');
       document.querySelector('#copy').click();
     })
     .catch(err => {

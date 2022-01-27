@@ -2,7 +2,6 @@
 
 const express = require('express');
 const { AwesomeQR } = require('awesome-qr');
-const fs = require('fs');
 const app = express();
 const port = 3001;
 
@@ -177,11 +176,9 @@ function generateKey() {
 }
 
 async function generateQR(link) {
-  const background = fs.readFileSync('qr-background.min.jpg');
   const buffer = await new AwesomeQR({
     text: link,
-    size: 500,
-    backgroundImage: background
+    size: 400
   }).draw();
   return buffer.toString('base64');
 }
