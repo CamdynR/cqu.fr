@@ -1,6 +1,7 @@
 // shortener.js
 
 const express = require('express');
+const path = require('path');
 const app = express();
 const port = 3001;
 
@@ -69,49 +70,7 @@ function keyHandler(req, res, http) {
     return;
   // Else it's an URL
   } else {
-    res.set('Content-Type', 'text/html');
-    res.send(`
-    <!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Cam's Quick URLs</title>
-    
-        <!-- Google Fonts - Rubik -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
-    
-        <!-- Main Stylesheet -->
-        <link rel="stylesheet" href="global.css">
-    
-        <!-- Main Script -->
-        <script src="script.js" type="module"></script>
-      </head>
-      <body>
-        <header>
-          <h1>Cam's Quick URLs - For Real</h1>
-        </header>
-        <form>
-          <input type="url" placeholder="URL to shorten" value="${keyOrURL}" required />
-          <button type="submit">Shorten</button>
-        </form>
-        <div id="output-wrapper" hidden>
-          <output></output>
-          <button id="copy">Copy</button>
-        </div>
-        <script>
-        document.addEventListener('DOMContentLoaded', init);
-
-        function init() {
-          const copy = document.querySelector('#copy');
-          copy.click();
-        }
-        </script>
-      </body>
-    </html>
-    `);
+    res.sendFile(path.join('__dirname', '/public/index.html'));
     return;
   }
 }
