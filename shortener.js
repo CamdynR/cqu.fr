@@ -47,11 +47,11 @@ app.listen(port, () => {
 function generateShortURL() {
   const charSet = 'ABCDEFGHJKMNPQRSTUVWXYZ';
   let shortURL = '';
-  while (Object.keys(shortened).includes(shortURL)) {
+  do {
     shortURL = '';
     for (let i = 0; i < 3; i++) {
       shortURL += charSet.charAt(Math.floor(Math.random() * charSet.length));
     }
-  }
+  } while (Object.keys(shortened).includes(shortURL));
   return shortURL;
 }
