@@ -90,7 +90,7 @@ output {
   margin: -58px -21.5px;
   padding: 5px 10px;
   position: absolute;
-  transition: 1.4s ease all;
+  transition: 2s ease all;
   opacity: 0;
 }
 
