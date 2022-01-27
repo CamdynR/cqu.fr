@@ -16,7 +16,21 @@ app.get('/favicon.ico', (req, res) => {
   res.status(204).send();
 });
 
-app.get('/:short', (req, res) => {
+app.get('/http:/:short', (req, res) => shortHandler(req, res));
+
+app.get('/https:/:short', (req, res) => shortHandler(req, res));
+
+app.get('/:short', (req, res) => shortHandler(req, res));
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});
+
+/****************************/
+/***   Helper Functions   ***/
+/****************************/
+
+function shortHandler(req, res) {
   const short = req.params.short;
   if (short.length == 3 && keysToURLs[short]) {
     res.redirect(301, `https://${keysToURLs[short]}`);
@@ -38,15 +52,7 @@ app.get('/:short', (req, res) => {
       url: `https://cqu.fr/${newShortCode}`
     });
   }
-});
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
-
-/****************************/
-/***   Helper Functions   ***/
-/****************************/
+}
 
 /**
  * Takes in a URL and creates a unique, short URL for it
