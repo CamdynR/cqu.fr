@@ -18,8 +18,9 @@ app.get('/favicon.ico', (req, res) => {
 
 app.get('/:short', shortHandler);
 app.get('/http:/:short', shortHandler);
+app.get('/http:/:short/*', shortHandler);
 app.get('/https:/:short', shortHandler);
-
+app.get('/https:/:short/*', shortHandler);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
@@ -30,7 +31,7 @@ app.listen(port, () => {
 /****************************/
 
 function shortHandler(req, res) {
-  const short = req.params.short;
+  const short = req.params.join('/');
   if (short.length == 3 && keysToURLs[short]) {
     res.redirect(301, `https://${keysToURLs[short]}`);
     return;
