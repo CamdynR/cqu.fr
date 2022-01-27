@@ -26,7 +26,7 @@ function formSubmitListener(e) {
 }
 
 async function copyText() {
-  const url = document.querySelector('#output-wrapper').innerHTML;
+  const url = document.querySelector('output').innerHTML;
   await navigator.clipboard.writeText(url);
   console.log('Successfully copied!');
 }
