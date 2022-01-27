@@ -32,7 +32,7 @@ app.listen(port, () => {
 
 function shortHandler(req, res) {
   let short = req.params.short;
-  if (Object.keys(req.params.length) > 1) short += `/${req.params[0]}`;
+  if (Object.keys(req.params).length > 1) short += `/${req.params[0]}`;
   console.log(short);
 
   if (short.length == 3 && keysToURLs[short]) {
