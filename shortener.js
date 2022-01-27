@@ -101,13 +101,13 @@ function keyHandler(req, res, http) {
           <output></output>
           <button id="copy">Copy</button>
         </div>
-        <script>
-        document.addEventListener('DOMContentLoaded', init);
+        <script type="module">
+          document.addEventListener('DOMContentLoaded', initShorten);
 
-        function init() {
-          const copy = document.querySelector('#copy');
-          copy.click();
-        }
+          function initShorten() {
+            const shorten = document.querySelector('button[type="submit"]');
+            shorten.click();
+          }
         </script>
       </body>
     </html>
