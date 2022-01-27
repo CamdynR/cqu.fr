@@ -1,6 +1,8 @@
 // shortener.js
 
 const express = require('express');
+const { AwesomeQR } = require('awesome-qr');
+const fs = require('fs');
 const app = express();
 const port = 3001;
 
@@ -123,7 +125,7 @@ function keyHandler(req, res, http) {
  * @param {object} res The response object passed in from the route
  * @param {boolean} http Whether or not HTTP is being used (instead of HTTPS)
  */
-function apiHandler(req, res, http) {
+async function apiHandler(req, res, http) {
   // Either the shortened URL or a new URL to shorten
   let url = req.params.url;
   // If there are subdirectories, append those to the key
@@ -137,8 +139,10 @@ function apiHandler(req, res, http) {
 
   // If it's a URL that's already been shortened, respond accordingly
   if (urlsToKeys[url]) {
+    const qr = await generateQR(`https://cqu.fr/${urlsToKeys[url]}`);
     res.json({
       url: `https://cqu.fr/${urlsToKeys[url]}`,
+      qr: qr,
       num: Object.keys(keysToURLs).length
     });
     return;
@@ -147,8 +151,10 @@ function apiHandler(req, res, http) {
     const newKeyCode = generateKey();
     keysToURLs[newKeyCode] = url;
     urlsToKeys[url] = newKeyCode;
+    const qr = await generateQR(`https://cqu.fr/${newKeyCode}`);
     res.json({
       url: `https://cqu.fr/${newKeyCode}`,
+      qr: qr,
       num: Object.keys(keysToURLs).length
     });
   }
@@ -168,4 +174,14 @@ function generateKey() {
     }
   } while (Object.keys(keysToURLs).includes(shortURL) || bannedKeys.includes(shortURL));
   return shortURL;
+}
+
+async function generateQR(link) {
+  const background = fs.readFileSync('qr-background.min.jpg');
+  const buffer = await new AwesomeQR({
+    text: link,
+    size: 500,
+    backgroundImage: background
+  }).draw();
+  return buffer.toString('base64');
 }
