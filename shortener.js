@@ -70,7 +70,7 @@ function keyHandler(req, res, http) {
     return;
   // Else it's an URL
   } else {
-    res.sendFile(path.join('__dirname', '/public/index.html'));
+    res.sendFile(path.join(__dirname, '/public/index.html'));
     return;
   }
 }
