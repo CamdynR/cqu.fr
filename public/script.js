@@ -5,7 +5,9 @@ document.addEventListener('DOMContentLoaded', init);
 // The initializing function, script starts executing here
 function init() {
   const form = document.querySelector('form');
-  form.addEventListener('submit', formSubmitListener)
+  const copy = document.querySelector('#copy');
+  form.addEventListener('submit', formSubmitListener);
+  copy.addEventListener('click', copyText);
 }
 
 // Crafts a shortener query with their input and directs to that page
@@ -21,4 +23,10 @@ function formSubmitListener(e) {
     .catch(err => {
       console.error(err);
     });
+}
+
+async function copyText() {
+  const url = document.querySelector('#output-wrapper').innerHTML;
+  await navigator.clipboard.writeText(url);
+  console.log('Successfully copied!');
 }
