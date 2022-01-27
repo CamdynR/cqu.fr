@@ -49,10 +49,12 @@ function keyHandler(req, res, http) {
   // If there are subdirectories, append those to the key
   if (Object.keys(req.params).length > 1) keyOrURL += `/${req.params[0]}`;
   // If there is a queryString, reconstruct it
-  const i = req.url.indexOf('?');
-  const queryStr = req.url.substr(i);
-  keyOrURL += queryStr;
-  console.log(keyOrURL);
+  if (req.url.includes('?')) {
+    const i = req.url.indexOf('?');
+    const queryStr = req.url.substr(i);
+    keyOrURL += queryStr;
+    console.log(keyOrURL);
+  }
 
   // If the length is 3, then it must be a key, check if it exists
   if (keyOrURL.length == 3 && keysToURLs[keyOrURL]) {
