@@ -126,3 +126,46 @@ output {
       background-position: 0% 50%;
   }
 }
+
+@media only screen and (max-width: 1000px) {
+  h1 {
+    font-size: 2.3rem;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  form {
+    display: grid;
+    width: 100%;
+  }
+
+  form button {
+    margin-left: -15%;
+    width: 130%;
+  }
+
+  input[type="url"] {
+    margin: 0 0 10px -15%;
+    width: 130%;
+  }
+
+  output {
+    margin-right: 10px;
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 440px) {
+  html {
+    font-size: 12px;
+  }
+}
