@@ -17,8 +17,8 @@ app.get('/favicon.ico', (req, res) => {
 });
 
 app.get('/:short', shortHandler);
-app.get('/http:/:short', shortHandler);
-app.get('/http:/:short/*', shortHandler);
+app.get('/http:/:short', (req, res) => { shortHandler(req, res, true) });
+app.get('/http:/:short/*', (req, res) => { shortHandler(req, res, true) });
 app.get('/https:/:short', shortHandler);
 app.get('/https:/:short/*', shortHandler);
 
@@ -30,13 +30,15 @@ app.listen(port, () => {
 /***   Helper Functions   ***/
 /****************************/
 
-function shortHandler(req, res) {
+function shortHandler(req, res, http) {
   let short = req.params.short;
   if (Object.keys(req.params).length > 1) short += `/${req.params[0]}`;
   console.log(short);
 
   if (short.length == 3 && keysToURLs[short]) {
-    res.redirect(301, `https://${keysToURLs[short]}`);
+    let protocol = 'https://';
+    if (!http) protocol = 'http://'
+    res.redirect(301, `${protocol}${keysToURLs[short]}`);
     return;
   } else if (short.length <= 3 && !keysToURLs[short]) {
     res.status(404).send(`This URL does not exist: /${short}`);
