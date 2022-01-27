@@ -31,7 +31,12 @@ app.listen(port, () => {
 /****************************/
 
 function shortHandler(req, res) {
-  const short = req.params.join('/');
+  let short = '';
+  const params = Object.keys(req.params);
+  params.forEach(param => {
+    console.log(`Param: ${param}\nValue: ${req.params[param]}\n\n`);
+  });
+
   if (short.length == 3 && keysToURLs[short]) {
     res.redirect(301, `https://${keysToURLs[short]}`);
     return;
