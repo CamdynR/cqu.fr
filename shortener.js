@@ -15,11 +15,6 @@ const urlsToKeys = {};
 // Banned Keys list to avoid insensitive topics
 const bannedKeys = ['KKK'];
 
-// Route so the favicon.ico doesn't trigger a reaction
-app.get('/favicon.ico', (req, res) => {
-  res.status(204).send();
-});
-
 // Routes to handle URL inputs
 app.get('/:key', keyHandler);
 app.get('/http:/:key', (req, res) => { keyHandler(req, res, true) });
