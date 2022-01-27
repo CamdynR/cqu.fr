@@ -16,9 +16,9 @@ app.get('/favicon.ico', (req, res) => {
   res.status(204).send();
 });
 
-app.get('/:short', shortHandler(req, res));
-app.get('/http:/:short', shortHandler(req, res));
-app.get('/https:/:short', shortHandler(req, res));
+app.get('/:short', shortHandler);
+app.get('/http:/:short', shortHandler);
+app.get('/https:/:short', shortHandler);
 
 
 app.listen(port, () => {
