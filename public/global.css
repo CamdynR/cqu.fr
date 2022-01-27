@@ -1,0 +1,9 @@
+/* global.css */
+
+* {
+  font-family: sans-serif;
+}
+
+input[type='url'] {
+  width: 340px;
+}
