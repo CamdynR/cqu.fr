@@ -102,6 +102,7 @@ function keyHandler(req, res, http) {
           <output></output>
           <button id="copy">Copy</button>
         </div>
+        <img id="qr-code" hidden height="400" width="400" alt="QR Code Link" src="">
         <script type="module">
           document.addEventListener('DOMContentLoaded', initShorten);
 
