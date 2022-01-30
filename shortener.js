@@ -7,6 +7,13 @@ const port = 3001;
 
 app.use(express.static('public'));
 
+// Set CORS headers for sendit.cqu.fr
+app.use((req, res, next) => {
+  res.set('Access-Control-Allow-Origin', 'https://sendit.cqu.fr');
+  res.set('Access-Control-Request-Method', 'GET');
+  next();
+});
+
 // Stores the associations between links and keys. Keys are unique, but to avoid multiple keys
 // for the same URLs, URLs must be unqiue as well. Refreshing the same link a few times will
 // always produce the same key.
