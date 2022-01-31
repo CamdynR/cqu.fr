@@ -16,19 +16,19 @@ body {
   row-gap: 5vh;
 }
 
-body.service-down {
+body.page-error {
   align-items: center;
   display: grid;
   grid-template-rows: 1fr;
   justify-items: center;
 }
 
-body.service-down>header {
+body.page-error>header {
   align-self: center;
   text-align: center;
 }
 
-body.service-down>header p {
+body.page-error>header p {
   align-self: center;
   font-size: 1.5rem;
   text-align: center;
