@@ -4,10 +4,16 @@ document.addEventListener('DOMContentLoaded', init);
 
 // The initializing function, script starts executing here
 function init() {
+  bindListeners();
+}
+
+function bindListeners() {
   const form = document.querySelector('form');
   const copy = document.querySelector('#copy');
+
   form.addEventListener('submit', formSubmitListener);
   copy.addEventListener('click', copyText);
+  document.addEventListener('keydown', keyShortcuts);
 }
 
 // Crafts a shortener query with their input and directs to that page
@@ -43,4 +49,19 @@ function copyText() {
     .catch(err => {
       console.error(err);
     });
+}
+
+// The keyboard shortcut handler. Currently Focuses the input
+// on '/' and de - focuses on escape
+function keyShortcuts(e) {
+  switch (e.key) {
+    case '/':
+      document.querySelector('input').focus();
+      e.preventDefault();
+      break;
+    case 'Escape':
+      document.querySelector('input').blur();
+      e.preventDefault();
+      break;
+  }
 }
